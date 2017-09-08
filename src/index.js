@@ -1,15 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+// React has diverged into two seperate libraries
+import React from 'react'
+import ReactDOM from 'react-dom'
+import SearchBar from './components/search_bar'
 
-import App from './components/app';
-import reducers from './reducers';
+const API_KEY = 'AIzaSyCSn2OhAV4kiz6-HaygJRoksRTaymSSMKsx'
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+// for multiline JS6 must use ()
+const App = () => {
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  )
+}
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+// render <App /> instead of App because an instance of App must be created
+ReactDOM.render(<App />, document.querySelector('.container'))
